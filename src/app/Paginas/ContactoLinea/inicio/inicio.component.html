@@ -1,0 +1,64 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-text color="tertiary" (click)="cerrarChat();">
+        
+        <h1><ion-icon name="arrow-back-outline"></ion-icon> CONTACTOS EN LINEA</h1>
+      </ion-text>
+
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid>
+    <ion-row>
+        <ion-col>
+      
+          <p style="text-align: center;">
+            <ion-text color="info">Seleccionar unidad organica</ion-text>
+          </p>
+        </ion-col>
+    </ion-row>
+  
+  
+  
+    
+    <ion-row>
+      <ion-col>
+  
+        <ion-list>
+          <ion-item>
+            <ion-select interface="action-sheet" placeholder="Seleccionar">
+              <ion-select-option value="">SUBGERENCIA DE LIMPIEZA PÚBLICA Y AREAS VERDES</ion-select-option>
+              <ion-select-option value="">SUBGERENCIA DE CONTROL DE RIESGOS DE DESASTRES</ion-select-option>
+              <ion-select-option value="">SUBGERENCIA DE OBRAS PÚBLICAS</ion-select-option>
+              <ion-select-option value="">SUBGERENCIA DE RECAUDACIÓN</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+  
+      </ion-col>
+    </ion-row>
+  
+    <ion-row>
+      <ion-col>
+        <ion-icon (click)="abrirChat();" name="chatbubbles-outline" style="font-size: 7em; color: rgb(5, 5, 210);"></ion-icon>
+        <p>Chat</p>
+      </ion-col>
+  
+      <ion-col>
+        <ion-icon (click)="abrirCita();" name="people-circle-outline" style="font-size: 7em; color: rgb(16, 171, 16);" ></ion-icon>
+        <p>Solicita tu cita <br>Virtual/Presencial</p>
+  
+      </ion-col>
+  
+    </ion-row>
+  
+  
+  </ion-grid>
+  
+</ion-content>
+

@@ -1,0 +1,44 @@
+<ion-content [fullscreen]="true">
+
+  <!-- Login Page -->
+  <div class="container" >
+    <p class="para">👋 Bienvenido a la</p>
+    <p><img src="/assets/imagenes/LOGOMUNI-1024x403.png" alt=""></p>
+    <form >
+      <ion-item lines="none" class="ion-item">
+        <fieldset  class="input-item">
+          <legend>Usuario</legend> 
+          <ion-input formControlName="email" type="email" placeholder=""></ion-input>
+        </fieldset>
+      </ion-item>
+      <ion-item lines="none" class="ion-item">
+        <fieldset class="input-item">
+          <legend>Clave</legend> 
+          <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+        </fieldset>
+      </ion-item>
+      <p class="forget-text"><a >olvidaste tu clave ?</a></p>
+      <ion-button class="login-button" (click)="iniciaSesion()" color="success" expand="block">Inicia sesion</ion-button>
+      <ion-button class="login-button" color="tertiary"  expand="block">Crea tu cuenta</ion-button>
+      <ion-button class="login-button" color="light" expand="block">Soy visitante</ion-button>
+
+    </form>
+  </div>
+
+  <ion-fab  slot="fixed" horizontal="end" vertical="end" style="padding-top: 3%;" >
+    <ion-fab-button (click)="auxilioRapido();" color="success" >
+      <ion-icon name="call-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+<ion-footer color="white">
+  <ion-toolbar>
+    <p class="copyright"  style="font-size: 23px; padding-bottom: 0; margin-bottom: 6px;color:#A6ABB1" >
+      <ion-icon name="logo-facebook"></ion-icon> &nbsp;
+      <ion-icon name="logo-twitter"></ion-icon>&nbsp;
+      <ion-icon name="logo-youtube"></ion-icon> &nbsp;
+      <ion-icon name="logo-tiktok"></ion-icon>
+    </p>
+  </ion-toolbar>
+</ion-footer>

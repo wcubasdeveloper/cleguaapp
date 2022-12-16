@@ -1,0 +1,48 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      
+      <ion-text color="tertiary" (click)="cerrarChat();">
+        
+        <h1><ion-icon name="arrow-back-outline"></ion-icon>  CHAT</h1>
+      </ion-text>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+  <ion-list>
+    <ion-item>
+      <ion-label style="font-weight: bold;">Tu email</ion-label>
+      <ion-input style="text-align: right"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label style="font-weight: bold;">Tu nombre</ion-label>
+      <ion-input style="text-align: right"  ></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label style="font-weight: bold;" >Tu Mensaje</ion-label>
+      <ion-textarea style="text-align: right" placeholder="Escribe tu mensaje aqui" ></ion-textarea>
+    </ion-item>
+  
+  
+    <ion-item>
+      <ion-label style="font-weight: bold;" >Agregar Foto</ion-label>
+      <ion-fab-button (click)="addPhotoToGallery()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-button color="success" expand="full" style="width: 100%; height: 45px;" expand="full">Enviar</ion-button>
+
+    </ion-item>
+
+
+  </ion-list>
+</ion-content>
+

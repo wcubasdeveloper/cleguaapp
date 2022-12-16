@@ -1,0 +1,73 @@
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+
+  <ion-card style="height: 90%;" >
+    <img alt="Silhouette of mountains" src="assets/imagenes/rentasup.jpg" />
+    <ion-card-header>
+      <ion-card-title>Bienvenido William Cubas.</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content >
+
+      <ion-grid  >
+        <ion-row>
+          <ion-col>
+            <ion-button color="success" shape="round">Eventos <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+
+          </ion-col>
+          <ion-col>
+            <ion-button color="success" shape="round" >Servicios <ion-icon name="chevron-forward-outline"></ion-icon> </ion-button>
+
+          </ion-col>
+
+
+          <ion-col>
+            <ion-button color="success" shape="round">Estacionamientos <ion-icon name="chevron-forward-outline"></ion-icon> </ion-button>
+
+          </ion-col>
+
+          <ion-col>
+            <ion-button color="secondary"  shape="round" (click)="contactoEnLinea();" >
+              Contactos en linea <ion-icon name="chevron-forward-outline"></ion-icon> 
+            </ion-button>
+
+          </ion-col>
+
+          <ion-col>
+            <ion-button color="success"  shape="round">Vecino Puntual <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button color="success"  shape="round">Pagos en linea <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button color="success" shape="round">Ofertas y descuentos <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button color="success" shape="round">Cerca a ti <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+
+
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-fab  slot="fixed" horizontal="end" vertical="end" style="padding-top: 3%;" >
+    <ion-fab-button (click)="auxilioRapido();" color="success" >
+      <ion-icon name="call-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

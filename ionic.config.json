@@ -1,0 +1,7 @@
+{
+  "name": "CLeguaApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
