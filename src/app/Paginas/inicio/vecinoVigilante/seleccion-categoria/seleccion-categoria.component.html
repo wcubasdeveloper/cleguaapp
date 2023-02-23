@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar>
+    <p style="text-align: center; margin-top: 6px; margin-bottom: 0px;">
+      <ion-icon color="light" style="font-size: 38px; position: absolute; left: 0; top: 12px;color:white !important" 
+      name="chevron-back-circle-outline" (click)="regresar()" ></ion-icon>
+      <ion-text color="dark">
+        <h2 style="color:white !important">Vecino vigilante</h2>
+      </ion-text>
+    </p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <p style="margin-bottom: 0;text-align: center;" >
+          <img style="width: 50%;" (click)="registrarReporte('Alumbrado público')"   src="/assets/imagenes/alumbrado.png" alt="">
+        </p>
+        <ion-text color="dark">
+          <h5 (click)="registrarReporte('Alumbrado público')" style="margin-top: 0; text-align: center; margin-bottom: 0; font-weight: bold;" >Alumbrado público</h5>
+        </ion-text>
+
+        <ion-text class="ion-text-center" color="primary">
+          <p style="text-align: center;margin-top: 0px;">Reporta daños de energía e iluminarias.</p>
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <p style="margin-bottom: 0;text-align: center;" >
+          <img style="width: 50%;"   src="/assets/imagenes/via publica.png" alt="">
+        </p>
+        <ion-text color="dark">
+          <h5 style="margin-top: 0; text-align: center; margin-bottom: 0; font-weight: bold;" >Hueco y Baches</h5>
+        </ion-text>
+
+        <ion-text class="ion-text-center" color="primary">
+          <p style="text-align: center;margin-top: 0px;">Reporta huecos y baches en la via pública.</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <p style="margin-bottom: 0;text-align: center;" >
+          <img style="width: 50%;"   src="/assets/imagenes/semaforos.png" alt="">
+        </p>
+        <ion-text color="dark">
+          <h5 style="margin-top: 0; text-align: center; margin-bottom: 0; font-weight: bold;" >Semáforos</h5>
+        </ion-text>
+
+        <ion-text class="ion-text-center" color="primary">
+          <p style="text-align: center;margin-top: 0px;">Reporta daños en semaforización.</p>
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <p style="margin-bottom: 0;text-align: center;" >
+          <img style="width: 50%;"   src="/assets/imagenes/basura.png" alt="">
+        </p>
+        <ion-text color="dark">
+          <h5 style="margin-top: 0; text-align: center; margin-bottom: 0; font-weight: bold;" >Puntos críticos de basuras</h5>
+        </ion-text>
+
+        <ion-text class="ion-text-center" color="primary">
+          <p style="text-align: center;margin-top: 0px;">Reporta acumulación de basuras en la via pública.</p>
+        </ion-text>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <p style="margin-bottom: 0;text-align: center;" >
+          <img style="width: 50%;"   src="/assets/imagenes/arboles.png" alt="">
+        </p>
+        <ion-text color="dark">
+          <h5 style="margin-top: 0; text-align: center; margin-bottom: 0; font-weight: bold;" >Árboles y vegetación</h5>
+        </ion-text>
+
+        <ion-text class="ion-text-center" color="primary">
+          <p style="text-align: center;margin-top: 0px;">Reporte de árboles y vegetación en mal estado.</p>
+        </ion-text>
+      </ion-col>
+
+      <ion-col>
+        <p style="margin-bottom: 0;text-align: center;" >
+          <img style="width: 50%;"   src="/assets/imagenes/contenedores.png" alt="">
+        </p>
+        <ion-text color="dark">
+          <h5 style="margin-top: 0; text-align: center; margin-bottom: 0; font-weight: bold;" >Contenedores de basura</h5>
+        </ion-text>
+
+        <ion-text class="ion-text-center" color="primary">
+          <p style="text-align: center;margin-top: 0px;">Reportar problemas de contenedores de basura.</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+
+
+</ion-content>

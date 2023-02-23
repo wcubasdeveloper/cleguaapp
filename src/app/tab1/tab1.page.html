@@ -1,73 +1,56 @@
+<ion-header>
+  <ion-toolbar>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <p style="text-align: center; margin-top: 6px; margin-bottom: 0px;">
+      <ion-icon color="medium" style="font-size: 38px; position: absolute; left: 0; top: 20px;"   (click)="regresar()" name="log-out-outline"></ion-icon>
+      <img style="width: 45%;" src="/assets/imagenes/NUEVO_2023-1.png" alt="">
+    </p>
 
-  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+      <p style="text-align: center; margin-top: 6px; margin-bottom: 0px;">
+        <img style="width: 100%;" src="/assets/imagenes/alerta_carmelino.png" alt=""></p>
+    
+  </ion-toolbar>
+</ion-header>
 
-  <ion-card style="height: 90%;" >
-    <img alt="Silhouette of mountains" src="assets/imagenes/rentasup.jpg" />
-    <ion-card-header>
-      <ion-card-title>Bienvenido William Cubas.</ion-card-title>
-    </ion-card-header>
-  
-    <ion-card-content >
+<ion-content>
 
-      <ion-grid  >
-        <ion-row>
-          <ion-col>
-            <ion-button color="success" shape="round">Eventos <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
+  <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <p style="margin-bottom: 0;" >
+          <img style="width: 61%;" (click)="seleccionVecinoVigilante()" src="/assets/imagenes/vecinos vigilantes.png" alt="">
 
-          </ion-col>
-          <ion-col>
-            <ion-button color="success" shape="round" >Servicios <ion-icon name="chevron-forward-outline"></ion-icon> </ion-button>
-
-          </ion-col>
-
-
-          <ion-col>
-            <ion-button color="success" shape="round">Estacionamientos <ion-icon name="chevron-forward-outline"></ion-icon> </ion-button>
-
-          </ion-col>
-
-          <ion-col>
-            <ion-button color="secondary"  shape="round" (click)="contactoEnLinea();" >
-              Contactos en linea <ion-icon name="chevron-forward-outline"></ion-icon> 
-            </ion-button>
-
-          </ion-col>
-
-          <ion-col>
-            <ion-button color="success"  shape="round">Vecino Puntual <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
-          </ion-col>
-
-          <ion-col>
-            <ion-button color="success"  shape="round">Pagos en linea <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
-          </ion-col>
-
-          <ion-col>
-            <ion-button color="success" shape="round">Ofertas y descuentos <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
-          </ion-col>
-
-          <ion-col>
-            <ion-button color="success" shape="round">Cerca a ti <ion-icon name="chevron-forward-outline"></ion-icon></ion-button>
-          </ion-col>
-
-        </ion-row>
-      </ion-grid>
+        </p>
+        
+        <ion-text color="dark">
+          <h4 style="margin-top: 0;" >Vecinos vigilantes</h4>
+        </ion-text>
 
 
-    </ion-card-content>
-  </ion-card>
+      </ion-col>
+      <ion-col style="text-align: center;"  >
+          <p style="margin-bottom: 0;" >
+            <img style="width: 61%;"   src="/assets/imagenes/alerta.png" alt="">
+          </p>
+          <ion-text color="dark">
+            <h4 style="margin-top: 0;">Reporta alerta</h4>
+          </ion-text>
+      </ion-col>
+    
+    </ion-row>
 
+    <ion-row>
 
-  <ion-fab  slot="fixed" horizontal="end" vertical="end" style="padding-top: 3%;" >
-    <ion-fab-button (click)="auxilioRapido();" color="success" >
-      <ion-icon name="call-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+      <ion-col style="text-align: center;"  >
+        <p style="margin-bottom: 0;" >
+          <img style="width: 61%;"   src="/assets/imagenes/servicios_.png" alt="">
+        </p>
+        <ion-text color="dark">
+          <h4 style="margin-top: 0;">Servicios</h4>
+        </ion-text>
+    </ion-col>
+
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

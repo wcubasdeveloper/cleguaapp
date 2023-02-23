@@ -1,0 +1,42 @@
+<ion-content [fullscreen]="true">
+
+<!-- Login Page -->
+<br>
+<div class="container" >
+  <p><img src="/assets/imagenes/LOGOMUNI-1024x403.png" alt=""></p>
+</div>
+
+<ion-fab  slot="fixed" horizontal="end" vertical="end" style="padding-top: 3%;" >
+  <ion-fab-button (click)="auxilioRapido();" color="danger" >
+    <p><img src="/assets/imagenes/boton SOS.png" alt=""></p>
+  </ion-fab-button>
+</ion-fab>
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <p style="text-align: center;" ><img style="width: 64%;" (click)="registrarPersonNatural()" src="/assets/imagenes/icono_persona_natural.png" alt=""></p>
+      <ion-text color="dark">
+        <h1 style="text-align: center;" (click)="registrarPersonNatural()" >Persona Natural</h1>
+      </ion-text>
+    </ion-col>
+
+    <ion-col>
+      <p style="text-align: center;" ><img style="width: 64%;" (click)="registraPersonaJuridica()" src="/assets/imagenes/persona_juridica.png" alt=""></p>
+      <ion-text color="dark">
+        <h1 style="text-align: center;" (click)="registraPersonaJuridica()" >Persona Jurídica</h1>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+
+
+</ion-grid>
+
+</ion-content>
+
+<ion-footer color="white">
+  <ion-toolbar>
+    <ion-button color="danger" shape="round" (click)="regresar()" expand="block"> Regresar </ion-button>
+
+  </ion-toolbar>
+</ion-footer>

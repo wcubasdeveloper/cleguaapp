@@ -3,7 +3,7 @@ import { PopoverController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuxilioRapidoComponent } from '../Paginas/auxilio-rapido/auxilio-rapido.component';
-import { InicioComponent} from '../Paginas/ContactoLinea/inicio/inicio.component';
+import { UsuarioService } from '../services/usuario.service';
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -14,42 +14,54 @@ export class Tab1Page {
   constructor( 
     private router: Router,
     public modalController: ModalController,
-    public popoverController: PopoverController
+    public popoverController: PopoverController,
+    private usuarioService : UsuarioService
+
     ) {
 
     }
-  async auxilioRapido(){
-    const popover = await this.popoverController.create({
-      component: AuxilioRapidoComponent,
-      componentProps: { 
-        dataviaje : {
-         
-        }
-      },
-      cssClass: 'my-custom-class',
-      // event: ev,
-      // translucent: true
-    });
-    await popover.present();
-    const { role } = await popover.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
 
-  async contactoEnLinea(){
+    regresar(){
+      this.usuarioService.clearDatosSesionUsuario();
+      this.router.navigateByUrl('login', { replaceUrl: true });
 
-    const popover = await this.modalController.create({
-      component: InicioComponent,
-      componentProps: { 
-        data : {
+    }
+    seleccionVecinoVigilante(){
+      this.router.navigateByUrl('seleccionarcatvecinovig', { replaceUrl: true });
+    }
+
+  // async auxilioRapido(){
+  //   const popover = await this.popoverController.create({
+  //     component: AuxilioRapidoComponent,
+  //     componentProps: { 
+  //       dataviaje : {
          
-        }
-      },
-      cssClass: 'my-custom-class',
-      // event: ev,
-      // translucent: true
-    });
-    await popover.present();
-    const { role } = await popover.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
+  //       }
+  //     },
+  //     cssClass: 'my-custom-class',
+  //     // event: ev,
+  //     // translucent: true
+  //   });
+  //   await popover.present();
+  //   const { role } = await popover.onDidDismiss();
+  //   console.log('onDidDismiss resolved with role', role);
+  // }
+
+  // async contactoEnLinea(){
+
+  //   const popover = await this.modalController.create({
+  //     component: InicioComponent,
+  //     componentProps: { 
+  //       data : {
+         
+  //       }
+  //     },
+  //     cssClass: 'my-custom-class',
+  //     // event: ev,
+  //     // translucent: true
+  //   });
+  //   await popover.present();
+  //   const { role } = await popover.onDidDismiss();
+  //   console.log('onDidDismiss resolved with role', role);
+  // }
 }

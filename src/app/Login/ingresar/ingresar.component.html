@@ -4,30 +4,31 @@
   <div class="container" >
     <p class="para">👋 Bienvenido a la</p>
     <p><img src="/assets/imagenes/LOGOMUNI-1024x403.png" alt=""></p>
-    <form >
+    <form [formGroup]="formularioLogin" >
       <ion-item lines="none" class="ion-item">
         <fieldset  class="input-item">
           <legend>Usuario</legend> 
-          <ion-input formControlName="email" type="email" placeholder=""></ion-input>
+          <ion-input formControlName="usuario" type="text" placeholder="" maxlength="30" ></ion-input>
         </fieldset>
       </ion-item>
       <ion-item lines="none" class="ion-item">
         <fieldset class="input-item">
           <legend>Clave</legend> 
-          <ion-input formControlName="password" type="password" placeholder="*******"></ion-input>
+          <ion-input formControlName="clave" type="password"  maxlength="30" placeholder="*******"></ion-input>
         </fieldset>
       </ion-item>
       <p class="forget-text"><a >olvidaste tu clave ?</a></p>
       <ion-button class="login-button" (click)="iniciaSesion()" color="success" expand="block">Inicia sesion</ion-button>
-      <ion-button class="login-button" color="tertiary"  expand="block">Crea tu cuenta</ion-button>
+      <ion-button class="login-button" (click)="registrarUsuario()" color="tertiary"  expand="block">Crea tu cuenta</ion-button>
       <ion-button class="login-button" color="light" expand="block">Soy visitante</ion-button>
-
     </form>
   </div>
 
   <ion-fab  slot="fixed" horizontal="end" vertical="end" style="padding-top: 3%;" >
-    <ion-fab-button (click)="auxilioRapido();" color="success" >
-      <ion-icon name="call-outline"></ion-icon>
+    <ion-fab-button (click)="auxilioRapido();" color="danger" >
+     
+      <p><img src="/assets/imagenes/boton SOS.png" alt=""></p>
+
     </ion-fab-button>
   </ion-fab>
 

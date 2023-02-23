@@ -1,0 +1,137 @@
+
+<ion-header>
+  <ion-toolbar>
+    <p style="text-align: center;margin-bottom: 0px;" ><img style="width: 33%;"  src="/assets/imagenes/icono_persona_natural.png" alt=""></p>
+
+    <ion-title>
+      <ion-text color="tertiary" style="text-align: center; color: #3f49ab; font-weight: bold;">
+        <h1 style="margin-top: 4px;">PERSONA NATURAL</h1>
+      </ion-text>    
+    </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-stepper #stepper [selectedIndex]="currentStep">
+    <ion-step label="Step 1"></ion-step>
+    <ion-step label="Step 2"></ion-step>
+    <ion-step label="Step 3"></ion-step>
+
+  </ion-stepper>
+
+  <form [formGroup]="step1Form" *ngIf="currentStep === 0">
+    <ion-list>
+
+      <ion-item>
+        <ion-label color="dark" style="width: 100%;margin-bottom: 10px;" position="stacked" >Tipo de documento</ion-label>
+
+        <ion-select class="input-redondeado"  formControlName="tipodocumento" interface="action-sheet" cancelText="Cerrar"    placeholder="Seleccionar tipo documento">
+          <ion-select-option value="1">DNI</ion-select-option>
+          <ion-select-option value="2">PTP</ion-select-option>
+          <ion-select-option value="3">CE</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-row>
+          <ion-col size="8" >
+            <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >N° de documento</ion-label>
+            <ion-input formControlName="nrodocumento"  maxlength="12"  type="text"  class="input-redondeado" ></ion-input>
+          </ion-col>
+          <ion-col size="2">
+            <ion-label color="dark"  position="stacked" style="margin-bottom: 10px;" >Digito</ion-label>
+            <ion-input formControlName="digitoverificador"  maxlength="1"  type="text"  class="input-redondeado" ></ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      
+
+      <ion-item>
+        <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"    >Fecha de emisión</ion-label>
+        <ion-input formControlName="fechaemision" maxlength="10"  placeholder="dd/mm/yyyy" mask="**/**/****"  class="input-redondeado"   placeholder="dd/mm/yyyy"   type="text" [(ngModel)]="selectedDate"  ></ion-input>
+      </ion-item>
+
+      <!-- <ion-item>
+        <ion-label color="dark"  position="floating">Fecha de emisión (dd/mm/yyyy)</ion-label>
+        <ion-datetime formControlName="fechaemision" displayFormat="DD/MM/YYYY" [(ngModel)]="fechaEmision"></ion-datetime>
+        <ion-datetime formControlName="fechavisita"  [(ngModel)]="fechaActual"  displayFormat="DD/MM/YYYY" placeholder="Seleccionar fecha"></ion-datetime>
+
+      </ion-item> -->
+
+
+    </ion-list>
+  </form>
+
+  <form [formGroup]="step2Form" *ngIf="currentStep === 1">
+    <ion-list>
+
+      <ion-item>
+        <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >Apellido paterno</ion-label>
+        <ion-input formControlName="apepat" class="input-redondeado"  maxlength="50" ></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >Apellido materno</ion-label>
+        <ion-input formControlName="apemat" class="input-redondeado" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >Nombres</ion-label>
+        <ion-input formControlName="nombres" class="input-redondeado" maxlength="50" ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >Teléfono</ion-label>
+        <ion-input formControlName="telefono" class="input-redondeado"  maxlength="10"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >Celular</ion-label>
+        <ion-input formControlName="celular" class="input-redondeado" maxlength="9" ></ion-input>
+      </ion-item>
+
+    </ion-list>
+  </form>
+
+
+  <form [formGroup]="step3Form" *ngIf="currentStep === 2">
+    <ion-list>
+      <ion-item>
+        <ion-text color="tertiary" style="text-align: center; color: #3f49ab; font-weight: bold;">
+          <h2 style="margin-top: 4px;font-weight: bold;">ACCESO A LA PLATAFORMA</h2>
+        </ion-text>  
+      </ion-item>
+
+      <ion-item>
+        <ion-text color="tertiary" style="text-align: center; color: #3f49ab; font-weight: bold;">
+          <h5 style="margin-top: 4px;">Ingresa tu correo, con el cual accederá a nuestra Plataforma y recibirá notificaciones.</h5>
+        </ion-text>   
+      </ion-item>
+
+      <ion-item>
+        <ion-input formControlName="correo"  class="input-redondeado" placeholder="Ingresar el correo" type="text" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-text color="tertiary" style="text-align: center; color: #3f49ab; font-weight: bold;">
+          <h4 style="margin-top: 4px;font-weight: bold;">AUTORIZACIÓN DE USO DE CASILLA ELECTRÓNICA</h4>
+        </ion-text>  
+      </ion-item>
+
+      <ion-item>
+        <ion-checkbox color="success" slot="start"></ion-checkbox>
+        <ion-label>He leido y aceptado <br>los <a href="https://www.google.com">términos y condiciones</a> </ion-label>
+      </ion-item>
+
+    </ion-list>
+  </form>
+
+  <ion-button (click)="submit()" *ngIf="currentStep === 2" expand="block" shape="round" color="success">Grabar</ion-button>
+
+  <ion-button (click)="nextStep()" *ngIf="currentStep < 2" expand="block" shape="round" color="success">Continuar</ion-button>
+  <ion-button (click)="previousStep()" *ngIf="currentStep > 0" style="margin-top: 10px;" expand="block" shape="round" color="tertiary">Atras</ion-button>
+  <ion-button (click)="cancelar()" *ngIf="currentStep === 0" style="margin-top: 10px;" expand="block" shape="round" color="danger">Cancelar</ion-button>
+
+</ion-content>

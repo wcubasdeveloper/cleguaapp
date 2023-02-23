@@ -1,45 +1,66 @@
-<ion-card>
-  <ion-card-header>
-    <ion-card-title style="text-align: center; font-size: 23px; font-weight: bold;" >Auxilio rápido</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <ion-list>
-      <ion-item>
-        <ion-thumbnail slot="start">
-          
-          <img alt="Silhouette of mountains" src="https://img2.freepng.es/20190807/sbq/kisspng-police-station-police-officer-police-precinct-tran-5d4a57667e9ff6.2933675415651531265187.jpg" />
-        </ion-thumbnail>
-        <ion-label>Comisaria</ion-label>
-      </ion-item>
+<ion-header>
+  <ion-toolbar>
 
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://img.lovepik.com/free-png/20210926/lovepik-alert-icon-png-image_401472810_wh1200.png" />
-        </ion-thumbnail>
-        <ion-label>Alerta</ion-label>
-      </ion-item>
+    <p style="text-align: center; margin-top: 6px; margin-bottom: 0px;">
+      <ion-icon (click)="cerrarModal()" color="medium" style="font-size: 38px; position: absolute; left: 0; top: 20px;" 
+      name="chevron-back-circle-outline"></ion-icon>
+      <img style="width: 45%;" src="/assets/imagenes/NUEVO_2023-1.png" alt=""></p>
 
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://seeklogo.com/images/S/sistema-nacional-de-defensa-civil-logo-766D5A7640-seeklogo.com.png" />
-        </ion-thumbnail>
-        <ion-label>Defensa Civil</ion-label>
-      </ion-item>
+      <p style="text-align: center; margin-top: 6px; margin-bottom: 0px;">
+        <img style="width: 100%;" src="/assets/imagenes/alerta_carmelino.png" alt=""></p>
+    
+  </ion-toolbar>
+</ion-header>
 
-      <ion-item lines="none">
-        <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://www.clipartmax.com/png/middle/302-3020676_camion-de-bomberos.png" />
-        </ion-thumbnail>
-        <ion-label>Bomberos</ion-label>
-      </ion-item>
+<ion-content>
 
-      <ion-item lines="none">
-        <ion-thumbnail slot="start">
-          <img alt="Silhouette of mountains" src="https://assets.stickpng.com/thumbs/5afac8866554160a79bea11f.png" />
-        </ion-thumbnail>
-        <ion-label>Ambulancia</ion-label>
-      </ion-item>
+  <ion-grid>
+    <ion-row>
+      <ion-col style="text-align: center;">
+        <p style="margin-bottom: 0;" >
+          <img style="width: 61%;" (click)="llamarEmergencia('015621044')" src="/assets/imagenes/comisaria_icono.png" alt="">
 
-    </ion-list>
-  </ion-card-content>
-</ion-card>
+        </p>
+        
+        <ion-text color="dark">
+          <h2 style="margin-top: 0;" >Comisaria</h2>
+        </ion-text>
+
+
+      </ion-col>
+      <ion-col style="text-align: center;"  >
+          <p style="margin-bottom: 0;" >
+            <img style="width: 61%;" (click)="llamarEmergencia('940485104')" src="/assets/imagenes/ambulancia_icono.png" alt="">
+          </p>
+          <ion-text color="dark">
+            <h2 style="margin-top: 0;">Ambulancia</h2>
+          </ion-text>
+      </ion-col>
+    
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col style="text-align: center;"  >
+        <p style="margin-bottom: 0;" >
+          <img style="width: 61%;" (click)="llamarEmergencia('015748197')" src="/assets/imagenes/bombero_icono.png" alt="">
+        </p>
+        <ion-text color="dark">
+          <h2 style="margin-top: 0;">Bombero</h2>
+        </ion-text>
+    </ion-col>
+
+
+    <ion-col style="text-align: center;"  >
+        <p style="margin-bottom: 0;" >
+          <img style="width: 61%;" data-pepe="numeroEmergenciaSerenazgo" (click)="llamarEmergencia('933296325')" src="/assets/imagenes/serenazgo_icono.png" alt="">
+        </p>
+        <ion-text color="dark">
+          <h2 style="margin-top: 0;">Serenazgo</h2>
+        </ion-text>
+    </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
