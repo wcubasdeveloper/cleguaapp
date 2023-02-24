@@ -42,7 +42,8 @@ export class RegistroComponent implements OnInit {
     correo: new FormControl('', Validators.required)
   });
 
-  constructor(  private formBuilder: FormBuilder,
+  constructor(  
+    private formBuilder: FormBuilder,
     private navCtrl: NavController,
     private route: ActivatedRoute,
     private modalController: ModalController,

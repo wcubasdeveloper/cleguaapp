@@ -63,9 +63,41 @@
       </ion-item>
 
 
-      <ion-item>
+      <!-- <ion-item>
         <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >Foto real</ion-label>
         <ion-button color="secondary" style="width: 100%;" shape="round"><ion-icon name="camera-outline"></ion-icon> Agregar fotografía</ion-button>
+      </ion-item> -->
+
+      <ion-item   >
+        
+        <ion-chip outline class="sectionfoto ion-color" style="width: 100%;" (click)="selectImageSource()" >
+          <input
+          type="file"
+          hidden="true" 
+          #fileInput
+          accept="image/*"
+          />
+          <ion-label id="lblestadosubida" style="width: 90%;"   >Agregar fotografía&nbsp;&nbsp;</ion-label>
+          <ion-icon name="camera-outline"  ></ion-icon>
+          <ion-icon id="iconcheck"  name="checkmark-outline" style="display:none;" ></ion-icon>
+        </ion-chip>
+  
+        <ion-chip id="sectionclear" outline   class="ion-color ion-color-danger" style="display:none"   >
+          <ion-icon name="close-outline" style="margin:0;" ></ion-icon>
+        </ion-chip>
+      </ion-item>
+
+      <!-- *ngif="imagenesCargadas.length > 0" -->
+      <ion-item  >
+        <ion-list>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12" class="imagenes"  *ngFor="let item of imagenesCargadas;let i = index" >
+                <ion-img class="imagencargadaunica" [src]="item.urlimagen" ></ion-img>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-list>
       </ion-item>
 
       <ion-item>

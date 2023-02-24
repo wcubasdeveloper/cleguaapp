@@ -26,8 +26,10 @@ export class Tab1Page {
       this.router.navigateByUrl('login', { replaceUrl: true });
 
     }
-    seleccionVecinoVigilante(){
-      this.router.navigateByUrl('seleccionarcatvecinovig', { replaceUrl: true });
+    seleccionVecinoVigilante(idCategoriaAlerta : string){
+      this.router.navigateByUrl('seleccionarcatvecinovig/' + idCategoriaAlerta, { replaceUrl: true });
+      //this.router.navigate(["seleccionarcatvecinovig", idCategoriaAlerta]);
+
     }
 
   // async auxilioRapido(){

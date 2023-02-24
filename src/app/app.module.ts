@@ -25,6 +25,8 @@ import { RegistroDireccionComponent} from './Paginas/inicio/vecinoVigilante/regi
 import {IonicInputMaskModule} from "@thiagoprz/ionic-input-mask";
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent, 

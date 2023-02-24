@@ -12,8 +12,8 @@ const routes: Routes = [
   { path: 'preregistro', component: PreRegistroComponent},
   { path: 'registro', component: RegistroComponent},
   { path: 'registrojuridica', component: RegistroJuridicaComponent},
-  { path: 'seleccionarcatvecinovig', component: SeleccionCategoriaComponent},
-  { path: 'registrodireccion', component: RegistroDireccionComponent},
+  { path: 'seleccionarcatvecinovig/:idcategoria', component: SeleccionCategoriaComponent},
+  { path: 'registrodireccion/:categoria/:idcategoria', component: RegistroDireccionComponent},
 
   {
     path: 'tabinicio',

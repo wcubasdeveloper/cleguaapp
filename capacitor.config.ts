@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.carmen.legua.app',
-  appName: 'Alerta C@rmelino',
+  appName: 'Alerta Carmelino',
   webDir: 'www',
   bundledWebRuntime: false
 };
