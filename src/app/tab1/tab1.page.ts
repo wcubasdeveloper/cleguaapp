@@ -4,6 +4,8 @@ import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { AuxilioRapidoComponent } from '../Paginas/auxilio-rapido/auxilio-rapido.component';
 import { UsuarioService } from '../services/usuario.service';
+
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',

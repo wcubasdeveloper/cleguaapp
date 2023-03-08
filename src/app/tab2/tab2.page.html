@@ -1,17 +1,25 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+
+    <p style="text-align: center; margin-top: 6px; margin-bottom: 0px;">
+      <img style="width: 45%;" src="/assets/imagenes/NUEVO_2023-1.png" alt="">
+    </p>
+
+      <p style="text-align: center; margin-top: 6px; margin-bottom: 0px;">
+        <img style="width: 100%;" src="/assets/imagenes/alerta_carmelino.png" alt=""></p>
+    
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <!-- <app-explore-container name="Tab 2 page"></app-explore-container> -->
+
+ <ion-list>
+  <ion-item *ngFor="let item of listaAlertas"  detail >
+    <ion-label >{{item.subCategoria}} <ion-badge color="{{item.idEstadoAlerta == 3 ? 'success' : 'danger'}}">{{item.idEstadoAlerta == 3 ? 'atendido' : 'en proceso'}}</ion-badge><br>
+    <ion-text color="dark"><sub>{{item.horaminutosPasados}}</sub></ion-text> <br>
+    <ion-text color="success" style="font-weight: bold;" (click)="enviarMensajeWpp(item.celular)" ><sub><ion-icon  name="logo-whatsapp"></ion-icon> {{item.celular}}</sub></ion-text></ion-label>
+    
+  </ion-item>
+</ion-list>
 </ion-content>

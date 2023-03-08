@@ -18,9 +18,9 @@
         </fieldset>
       </ion-item>
       <p class="forget-text"><a >olvidaste tu clave ?</a></p>
-      <ion-button class="login-button" (click)="iniciaSesion()" color="success" expand="block">Inicia sesion</ion-button>
+      <ion-button class="login-button" disabled="{{loading}}" (click)="iniciaSesion()" color="success" expand="block">Inicia sesion</ion-button>
       <ion-button class="login-button" (click)="registrarUsuario()" color="tertiary"  expand="block">Crea tu cuenta</ion-button>
-      <ion-button class="login-button" color="light" expand="block">Soy visitante</ion-button>
+      <ion-button class="login-button" color="light"  expand="block">Soy visitante</ion-button>
     </form>
   </div>
 
@@ -35,11 +35,11 @@
 </ion-content>
 <ion-footer color="white">
   <ion-toolbar>
-    <p class="copyright"  style="font-size: 23px; padding-bottom: 0; margin-bottom: 6px;color:#A6ABB1" >
+    <p class="copyright"   style="font-size: 23px; padding-bottom: 0; margin-bottom: 6px;color:#A6ABB1" >
       <ion-icon name="logo-facebook"></ion-icon> &nbsp;
       <ion-icon name="logo-twitter"></ion-icon>&nbsp;
       <ion-icon name="logo-youtube"></ion-icon> &nbsp;
-      <ion-icon name="logo-tiktok"></ion-icon>
+      <ion-icon name="logo-tiktok" (click)="verificarServicioHost()"  ></ion-icon>
     </p>
   </ion-toolbar>
 </ion-footer>

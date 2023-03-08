@@ -6,6 +6,7 @@ import { PopoverController } from '@ionic/angular';
 import { FormBuilder, FormGroup, FormControl , Validators } from '@angular/forms';
 import { UsuarioService} from '../../services/usuario.service';
 import { ModalController, PickerController, NavController,AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { environment } from  './../../../environments/environment';
 
 @Component({
   selector: 'app-ingresar',
@@ -20,7 +21,7 @@ export class IngresarComponent implements OnInit {
   });
 
   datosUsario : any;
-
+  loading : boolean = false;
   constructor( 
     private router: Router,
     public modalController: ModalController,
@@ -58,10 +59,15 @@ export class IngresarComponent implements OnInit {
       clave : formValues.clave,
     };
 
+    this.loading = true;
+
     this.usuarioService.loginUsuario(dataEnvio).subscribe(
       (data :any) =>{
 
+        // console.log("RESPONSAEEEe");
+        // console.log(data);
         setTimeout(() => this.desactivarLoading(), 500);
+        this.loading = false;
 
         var success = data.success;
         var codResultado = 0;
@@ -82,16 +88,63 @@ export class IngresarComponent implements OnInit {
           if(codResultado == 1){
             var dataGuardaLogin = {
               idusuario : data.auxiliar,
-              nombreUsuario : dataEnvio.usuario
+              nombreUsuario : dataEnvio.usuario,
+              codUsuarioPerfil : data.codUsuarioPerfil,
+              nombresPersona: data.nombresPersona
             };
             this.usuarioService.setDatosSesionPasajero(dataGuardaLogin);
           }
         }else{
           this.mostrarMensajeConfirmacion("Ocurrió un error al llamar al servicio.", false, "Notificación");
         }
+      },
+      error =>{ //ocurrió un error 
+        this.loading = false;
+        this.mostrarMensajeConfirmacion("Ocurrió un error en el servicio.", false, "Notificación");
       }
     );
     //this.router.navigateByUrl('tabinicio', { replaceUrl: true });
+  }
+
+
+  async verificarServicioHost(){
+
+    // console.log("holaaaa");
+    var hostGuardado = (this.usuarioService.getHostAPI() ? this.usuarioService.getHostAPI() : '--');
+
+    console.log("HOST GUARDADO--", hostGuardado);
+    const alert = await this.alertController.create({
+      header: 'HOST ACTUAL : \n' + hostGuardado,
+      inputs: [
+        {
+          name: 'name',
+          type: 'text',
+          placeholder: 'Host API AQUI'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Prompt cancelado');
+          }
+        },
+        {
+          text: 'Aceptar',
+          handler: (data) => {
+            console.log('Nombre ingresado:', data.name);
+
+            var urlHOST = data.name;
+            this.usuarioService.setHostAPI(urlHOST);
+
+          }
+        }
+      ]
+    });
+  
+    await alert.present();
+
   }
 
   registrarUsuario(){

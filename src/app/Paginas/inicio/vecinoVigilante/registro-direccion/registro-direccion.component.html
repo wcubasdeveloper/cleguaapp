@@ -19,6 +19,9 @@
             <ion-text color="tertiary" style="text-align: center; color: #3f49ab; font-weight: bold;">
               <h5 style="margin-top: 4px;font-weight: bold;">REGISTRO DIRECCIÓN</h5>
             </ion-text>    
+            <!-- <ion-button (click)="startRecording()" > 
+              GRABAR PEEE
+            </ion-button> -->
           </ion-item>
     
           <ion-item>
@@ -105,7 +108,7 @@
         <ion-textarea formControlName="observacionalerta" placeholder="Escribe tu mensaje aquí" rows="4" ></ion-textarea>
       </ion-item>
 
-      <ion-item>
+      <!-- <ion-item>
         <ion-text color="tertiary" style="text-align: center; color: #3f49ab; font-weight: bold;">
           <h5 style="margin-top: 4px;font-weight: bold;margin-bottom: 0px;">Si desea envie una grabación de audio:</h5>
           <small color="danger" style="color:red;">(Máximo 30 segundos )</small>
@@ -115,18 +118,14 @@
       <ion-item>
         
         <ion-button fill="outline"><ion-icon name="mic-outline" ></ion-icon></ion-button>
-
-        
         <ion-range (ionChange)="onIonChange($event)"></ion-range>
-        <!-- <ion-label>{{ lastEmittedValue }}</ion-label> -->
         <ion-button fill="outline"><ion-icon name="stop-outline"></ion-icon></ion-button>
 
-
-      </ion-item>
+      </ion-item> -->
     </ion-list>
   </form>
 
-  <ion-button (click)="submit()" *ngIf="currentStep === 1" expand="block" shape="round" color="success">Enviar</ion-button>
+  <ion-button (click)="submit()" *ngIf="currentStep === 1" disabled="{{loading}}"  expand="block" shape="round" color="success">Enviar</ion-button>
   <ion-button (click)="nextStep()" *ngIf="currentStep < 1" expand="block" shape="round" color="success">Continuar</ion-button>
   <ion-button (click)="previousStep()" *ngIf="currentStep > 0" style="margin-top: 10px;" expand="block" shape="round" color="tertiary">Atras</ion-button>
   <ion-button (click)="cancelar()" *ngIf="currentStep === 0" style="margin-top: 10px;" expand="block" shape="round" color="danger">Cancelar</ion-button>

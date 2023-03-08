@@ -5,7 +5,7 @@ import { ModalController, PickerController, NavController,AlertController, Loadi
 import { Router } from '@angular/router';
 import { UsuarioService} from '../../../services/usuario.service';
 import { IonRouterOutlet } from '@ionic/angular';
-
+import {environment} from './../../../../environments/environment'
 //import { IonStepper } from '@ionic/angular'; // <- asegurarse de importar IonStepper
 
 
@@ -20,6 +20,7 @@ export class RegistroComponent implements OnInit {
   currentStep = 0;
   // fechaEmision: Date;
   selectedDate: string;
+  loading : boolean = false;
 
   public mask = ['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 
@@ -213,11 +214,13 @@ export class RegistroComponent implements OnInit {
     };
 
 
+    this.loading = true;
 
     this.usuarioService.registrarUsuario(dataEnvio).subscribe(
       (data :any) =>{
 
         setTimeout(() => this.desactivarLoading(), 500);
+        this.loading = false;
 
         var success = data.success;
         var codResultado = 0;
@@ -238,6 +241,10 @@ export class RegistroComponent implements OnInit {
         }else{
           this.mostrarMensajeConfirmacion("Ocurrió un error al llamar al servicio.", false, "Notificación");
         }
+      },
+      error =>{ //ocurrió un error 
+        this.loading = false;
+        this.mostrarMensajeConfirmacion("Ocurrió un error en el servicio.", false, "Notificación");
       }
     );
   }

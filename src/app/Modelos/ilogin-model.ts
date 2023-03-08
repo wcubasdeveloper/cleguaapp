@@ -1,6 +1,8 @@
 export interface IloginModel {
     idusuario  : number,
-    nombreUsuario : string 
+    nombreUsuario : string ,
+    codUsuarioPerfil : number,
+    nombresPersona : string
     // nombresPasajero : string,
     // apepatPasajero : string,
     // apematPasajero : string,

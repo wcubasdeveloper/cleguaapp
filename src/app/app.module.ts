@@ -23,6 +23,7 @@ import { RegistroJuridicaComponent} from './Login/Registro/registro-juridica/reg
 import { SeleccionCategoriaComponent} from './Paginas/inicio/vecinoVigilante/seleccion-categoria/seleccion-categoria.component'; 
 import { RegistroDireccionComponent} from './Paginas/inicio/vecinoVigilante/registro-direccion/registro-direccion.component'; 
 import {IonicInputMaskModule} from "@thiagoprz/ionic-input-mask";
+import { MediaCapture, MediaFile, CaptureError } from '@awesome-cordova-plugins/media-capture/ngx';
 
 
 
@@ -51,7 +52,14 @@ import {IonicInputMaskModule} from "@thiagoprz/ionic-input-mask";
     IonicInputMaskModule
   ], // incluir IonicModule en imports
 
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },CallNumber],
+  providers: [
+    { 
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy 
+    },
+    CallNumber, 
+    MediaCapture
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA] // Agregar aquí el CUSTOM_ELEMENTS_SCHEMA
 

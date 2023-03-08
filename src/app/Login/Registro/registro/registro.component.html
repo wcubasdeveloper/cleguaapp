@@ -128,7 +128,7 @@
     </ion-list>
   </form>
 
-  <ion-button (click)="submit()" *ngIf="currentStep === 2" expand="block" shape="round" color="success">Grabar</ion-button>
+  <ion-button (click)="submit()" *ngIf="currentStep === 2" disabled="{{loading}}" expand="block" shape="round" color="success">Grabar</ion-button>
 
   <ion-button (click)="nextStep()" *ngIf="currentStep < 2" expand="block" shape="round" color="success">Continuar</ion-button>
   <ion-button (click)="previousStep()" *ngIf="currentStep > 0" style="margin-top: 10px;" expand="block" shape="round" color="tertiary">Atras</ion-button>

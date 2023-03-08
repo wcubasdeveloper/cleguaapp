@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef  } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl , Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router'; // Importar el servicio ActivatedRoute
+import { environment } from  './../../../../../environments/environment';
 
 import { 
   ModalController, PickerController,ActionSheetController, NavController,
@@ -16,6 +17,10 @@ import { Camera, CameraSource, CameraResultType } from '@capacitor/camera';
 
 // import { VoiceRecorderPlugin, VoiceRecorderResult } from 'capacitor-voice-recorder';
 import { Plugins } from '@capacitor/core';
+
+
+import { MediaCapture, MediaFile, CaptureError } from '@awesome-cordova-plugins/media-capture/ngx';
+// import { Media, MediaObject } from '@ionic-native/media';
 
 // import { Plugins } from '@capacitor/core';
 // const { VoiceRecorder } = Plugins;
@@ -33,7 +38,7 @@ declare var google : any;
 export class RegistroDireccionComponent implements OnInit {
 
   // private recorder: VoiceRecorderPlugin;
-
+  loading : boolean = false;
   datosUsuario :any;
   currentStep = 0;
   lastEmittedValue: RangeValue;
@@ -65,7 +70,8 @@ export class RegistroDireccionComponent implements OnInit {
     private loadingController : LoadingController,
     private alertController: AlertController,
     private usuarioService: UsuarioService,
-    private actionSheetCtrl: ActionSheetController
+    private actionSheetCtrl: ActionSheetController,
+    private mediaCapture: MediaCapture
     // private voiceRecorderPlugin: VoiceRecorderPlugin
   ) { 
     this.lastEmittedValue= 0;
@@ -101,6 +107,25 @@ export class RegistroDireccionComponent implements OnInit {
 
   }
 
+  // startRecording() {
+  //   console.log("graba pe");
+  //   this.mediaCapture.captureAudio().then(
+  //     (data: any) =>{
+  //       console.log(data)
+  //     },
+  //     (err: CaptureError) =>{
+  //       console.log("ERROR--");
+  //       console.error(err)
+  //     }
+      
+  //   );
+  // }
+
+  // stopRecording() {
+  //   // this.mediaCapture.
+  //   this.mediaCapture.stopRecord();
+  // }
+  
 
   // async startRecording() {
     // try {
@@ -259,6 +284,7 @@ export class RegistroDireccionComponent implements OnInit {
     const formValues = Object.assign({}, this.step1Form.value, this.step2Form.value);
 
     //verifica si hay latitud y longitud
+    
     if(this.currpositionmarker){
         var position = this.currpositionmarker.getPosition();
         var latitud = position.lat();
@@ -297,11 +323,13 @@ export class RegistroDireccionComponent implements OnInit {
             "base64Data": base64Data,
           };
     
+          this.loading = true;
           this.reporteService.registrarAlerta(dataEnvio).subscribe(
             (data :any) =>{
       
               setTimeout(() => this.desactivarLoading(), 500);
-      
+              this.loading = false;
+
               var success = data.success;
               var codResultado = 0;
               var desResultado = "";
@@ -321,6 +349,10 @@ export class RegistroDireccionComponent implements OnInit {
               }else{
                 this.mostrarMensajeConfirmacion("Ocurrió un error al llamar al servicio.", false, "Notificación");
               }
+            },
+            error =>{ //ocurrió un error 
+              this.loading = false;
+              this.mostrarMensajeConfirmacion("Ocurrió un error en el servicio.", false, "Notificación");
             }
           );
     

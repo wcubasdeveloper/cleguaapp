@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from  './../../environments/environment';
-import { Observable } from 'rxjs';
 import { IloginModel} from '../Modelos/ilogin-model';
 
 @Injectable({
@@ -24,14 +23,23 @@ export class UsuarioService {
   // }
 
   loginUsuario(dataRequest : any) {
-    const body = {
-        "usuario": dataRequest.usuario,  
-        "clave": dataRequest.clave
-    };
+      const body = {
+          "usuario": dataRequest.usuario,  
+          "clave": dataRequest.clave
+      };
+      //return this.http.post(environment.baseUrlServicio +(!isproduccion ? 'api/App/LoginUsuario/' : ''), body);
+      //return this.http.post(environment.baseUrlServicio + 'api/App/LoginUsuario/', body);
+      let HOST_API = this.getHostAPI() + '/apiclegua/';
 
-    console.log("body", body);
-    return this.http.post(environment.baseUrlServicio +'api/App/LoginUsuario/', body);
+      return this.http.post(HOST_API + 'api/App/LoginUsuario/', body);
+
+      // return this.http.post(HOST_API + 'api/App/LoginUsuario/', body)
+      // .pipe(
+      //   catchError(this.handleError)
+      // );
   }
+
+
   
   registrarUsuario(dataRequest : any) {
     const body = {
@@ -51,8 +59,15 @@ export class UsuarioService {
         "razonSocial": dataRequest.razonSocial, 
         "direccionEmpresa": dataRequest.direccionEmpresa, 
     };
+    
+    //return this.http.post(environment.baseUrlServicio +(!isproduccion ? 'api/App/RegistroUsuario/' : ''), body);
 
-    return this.http.post(environment.baseUrlServicio +'api/App/RegistroUsuario/', body);
+    ///return this.http.post(environment.baseUrlServicio +'api/App/RegistroUsuario/' , body);
+    let HOST_API = this.getHostAPI() + '/apiclegua/';
+
+    return this.http.post(HOST_API +'api/App/RegistroUsuario/' , body);
+
+
   }
 
   
@@ -78,12 +93,29 @@ export class UsuarioService {
     //
     let datosPasajero : IloginModel = {
       idusuario : usuarioData.idusuario,
-      nombreUsuario : usuarioData.nombreUsuario
+      nombreUsuario : usuarioData.nombreUsuario,
+      codUsuarioPerfil : usuarioData.codUsuarioPerfil,
+      nombresPersona: usuarioData.nombresPersona
     }
 
     localStorage.setItem("datosUsuarioLoginapp", JSON.stringify(datosPasajero));
   }
 
+
+  //DATOS PARA URL 
+  setHostAPI(url : string): void {
+    this.clearDatosHostAPI();
+    localStorage.setItem("urlhostbase", url);
+  }
+
+  clearDatosHostAPI(){
+    localStorage.removeItem('urlhostbase');
+  }
+
+  getHostAPI(): any {
+    let host_api = localStorage.getItem("urlhostbase");
+    return host_api;
+  }
 }
 
 

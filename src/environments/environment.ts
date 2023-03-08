@@ -4,9 +4,11 @@
 
 export const environment = {
   production: false,
-  baseUrlServicio : 'http://localhost:57027/',
-
+  baseUrlServicio : 'http://localhost:57027/', //desarrollo
+  //baseUrlServicio : 'https://municarmendelalegua.gob.pe/test.php/', //produccion
+  //baseUrlServicio : 'https://ec7c-181-65-104-158.sa.ngrok.io/apiclegua/', //produccion local wcubas
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
