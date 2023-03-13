@@ -106,6 +106,59 @@ export class IngresarComponent implements OnInit {
     //this.router.navigateByUrl('tabinicio', { replaceUrl: true });
   }
 
+  ingresarComoVisitante(){
+
+    var dataEnvio = {
+      usuario : '99999999',
+      clave : 'rpUTPHnw',
+    };
+
+    this.loading = true;
+
+    this.usuarioService.loginUsuario(dataEnvio).subscribe(
+      (data :any) =>{
+
+        // console.log("RESPONSAEEEe");
+        // console.log(data);
+        setTimeout(() => this.desactivarLoading(), 500);
+        this.loading = false;
+
+        var success = data.success;
+        var codResultado = 0;
+        var desResultado = "";
+        if(success){
+          console.log("--->>", data);
+          codResultado = data.codRespuesta;
+          desResultado = data.desRespuesta;
+          //
+        
+          //
+          this.mostrarMensajeConfirmacion(
+            desResultado, 
+            (codResultado == 1 ? true:false),
+            (codResultado == 1 ? "Mensaje": "Notificación") 
+          );
+
+          if(codResultado == 1){
+            var dataGuardaLogin = {
+              idusuario : data.auxiliar,
+              nombreUsuario : dataEnvio.usuario,
+              codUsuarioPerfil : data.codUsuarioPerfil,
+              nombresPersona: data.nombresPersona
+            };
+            this.usuarioService.setDatosSesionPasajero(dataGuardaLogin);
+          }
+        }else{
+          this.mostrarMensajeConfirmacion("Ocurrió un error al llamar al servicio.", false, "Notificación");
+        }
+      },
+      error =>{ //ocurrió un error 
+        this.loading = false;
+        this.mostrarMensajeConfirmacion("Ocurrió un error en el servicio.", false, "Notificación");
+      }
+    );
+  }
+
 
   async verificarServicioHost(){
 

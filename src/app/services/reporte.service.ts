@@ -26,7 +26,8 @@ export class ReporteService {
       //"nombreAudio":dataRequest.nombreAudio,
       "contentType": dataRequest.contentType,
       "extensionimg": dataRequest.extensionimg,
-      "base64Data": dataRequest.base64Data
+      "base64Data": dataRequest.base64Data,
+      "esAnonimo" : dataRequest.esAnonimo
     };
 
     //return this.http.post(environment.baseUrlServicio +(!isproduccion ? 'api/App/RegistraAlerta/' : ''), body);
@@ -48,4 +49,21 @@ export class ReporteService {
     let HOST_API = this.usuarioService.getHostAPI() + '/apiclegua/';
     return this.http.post(HOST_API +'api/App/ListaAlertaPorUsuario/', body);
   }
+
+  atenderAlerta(dataAtencion : any) {
+    const body = {
+      "idRegistroAtencion":dataAtencion.idRegistroAtencion,
+      "idUsuarioAtencion" : dataAtencion.idUsuarioAtencion,
+      "descripcionAtencion" : dataAtencion.descripcionAtencion,
+      "base64ImgAtencion" : dataAtencion.base64ImgAtencion,
+      "mimetype" : dataAtencion.mimetype,
+      "extension" : dataAtencion.extension
+    };
+    //return this.http.post(environment.baseUrlServicio +(!isproduccion ? 'api/App/RegistraAlerta/' : ''), body);
+    //return this.http.post(environment.baseUrlServicio +'api/App/RegistraAlerta/', body);
+    let HOST_API = this.usuarioService.getHostAPI() + '/apiclegua/';
+    return this.http.post(HOST_API +'api/App/AtenderAlerta/', body);
+  }
+
+
 }

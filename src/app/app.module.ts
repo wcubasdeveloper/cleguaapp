@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { IngresarComponent } from './Login/ingresar/ingresar.component';
 import { AuxilioRapidoComponent } from './Paginas/auxilio-rapido/auxilio-rapido.component';
 import { CallNumber } from '@awesome-cordova-plugins/call-number/ngx';
+import { CommonModule } from '@angular/common'; // Agrega esta línea
 
 
 import { ChatComponent} from './Paginas/ContactoLinea/chat/chat.component';
@@ -22,6 +23,8 @@ import { RegistroJuridicaComponent} from './Login/Registro/registro-juridica/reg
 
 import { SeleccionCategoriaComponent} from './Paginas/inicio/vecinoVigilante/seleccion-categoria/seleccion-categoria.component'; 
 import { RegistroDireccionComponent} from './Paginas/inicio/vecinoVigilante/registro-direccion/registro-direccion.component'; 
+import { DetalleComponent } from './tab2/Alerta/detalle/detalle.component'
+
 import {IonicInputMaskModule} from "@thiagoprz/ionic-input-mask";
 import { MediaCapture, MediaFile, CaptureError } from '@awesome-cordova-plugins/media-capture/ngx';
 
@@ -39,7 +42,8 @@ import { MediaCapture, MediaFile, CaptureError } from '@awesome-cordova-plugins/
     RegistroComponent,
     RegistroJuridicaComponent,
     SeleccionCategoriaComponent,
-    RegistroDireccionComponent
+    RegistroDireccionComponent,
+    DetalleComponent
   ],
   // imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   imports: [
@@ -49,7 +53,8 @@ import { MediaCapture, MediaFile, CaptureError } from '@awesome-cordova-plugins/
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    IonicInputMaskModule
+    IonicInputMaskModule,
+    CommonModule
   ], // incluir IonicModule en imports
 
   providers: [

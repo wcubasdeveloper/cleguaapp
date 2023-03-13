@@ -1,0 +1,149 @@
+<ion-header>
+  <ion-toolbar>
+    <p style="text-align: center; margin-top: 6px; margin-bottom: 0px;">
+      <ion-icon color="light" style="font-size: 38px; position: absolute; left: 0; top: 12px;color:white !important" 
+      name="chevron-back-circle-outline" (click)="regresar()" ></ion-icon>
+      <ion-text color="dark">
+        <h4 style="color:white !important">Detalle del registro</h4>
+      </ion-text>
+    </p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-badge color="tertiary">{{ 'Registrado Hace ' + objetoRecibido.horaminutosPasados}}</ion-badge>
+    </ion-item>
+
+    <ion-item>
+      <img style="width: 100%;" src="{{urlImagenRegistro}}" alt="">
+    </ion-item>
+
+    <ion-item>
+      
+      <ion-label *ngIf="!objetoRecibido.esAnonimo">
+        <ion-text style="white-space: normal;" >
+          <ion-icon color="secondary" name="person-circle-outline"></ion-icon> {{ objetoRecibido.Nombres}} <br>
+          <ion-icon  color="secondary" name="call-outline"></ion-icon> {{ objetoRecibido.celular}} <br>
+          <ion-icon  color="secondary" name="mail-outline"></ion-icon> {{ objetoRecibido.correo}} <br>
+          <ion-icon  color="secondary" name="location-outline"></ion-icon>  {{ objetoRecibido.direccionAlerta + ' (' + objetoRecibido.direccionReferencia + ')' }} <br> <br>
+          <ion-icon  color="secondary" name="document-text-outline"></ion-icon> {{ objetoRecibido.descripcionAlerta}}
+        </ion-text>
+      </ion-label>
+
+      <ion-label *ngIf="objetoRecibido.esAnonimo">
+        <ion-text style="white-space: normal;" >
+          <ion-icon color="danger" name="person-circle-outline"></ion-icon> ( Anónimo ) <br>
+      
+        </ion-text>
+      </ion-label>
+
+
+      
+
+    </ion-item>
+
+
+    <ion-item>
+      <div #contenidomapaatencion id="contenidomapaatencion" style="height: 300px;width: 100%;">
+    
+      </div>
+    </ion-item>
+
+
+  </ion-list>
+  <ion-button color="tertiary"  fill="outline" id="open-modal" style="color:white;width: 100%;" >Atencion</ion-button>
+
+
+  <ion-modal #modal trigger="open-modal"  [initialBreakpoint]="0.75" [breakpoints]="[0, 0.25, 0.5, 0.75]">
+    <ng-template>
+      <ion-content>
+        <br>
+        <form [formGroup]="step1Form" >
+          <ion-list>
+            
+            <ion-item>
+              <ion-text color="tertiary" style="text-align: center; color: #3f49ab; font-weight: bold;width: 100%;">
+                <h5 style="margin-top: 4px;font-weight: bold;text-align: center;">REGISTRO DE ATENCIÓN</h5>
+              </ion-text>  
+            </ion-item>
+
+            <ion-item *ngIf="isPolicia && atiendeAlertaBool" >
+              <ion-chip outline class="sectionfoto ion-color" style="width: 100%;" (click)="selectImageSource()" >
+                
+                <input
+                type="file"
+                hidden="true" 
+                #fileInput
+                accept="image/*"
+                />
+      
+                <ion-label id="lblestadosubida" style="width: 90%;"   >Agregar fotografía&nbsp;&nbsp;</ion-label>
+                <ion-icon name="camera-outline"  ></ion-icon>
+                <ion-icon id="iconcheck"  name="checkmark-outline" style="display:none;" ></ion-icon>
+              </ion-chip>
+        
+              <ion-chip id="sectionclear" outline   class="ion-color ion-color-danger" style="display:none"   >
+                <ion-icon name="close-outline" style="margin:0;" ></ion-icon>
+              </ion-chip>
+            </ion-item>
+
+
+            <ion-item *ngIf="!atiendeAlertaBool" >
+              <ion-list>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="12" class="imagenes"  >
+                      <img style="width: 100%;" src="{{urlImagenAtencion}}" alt="">
+
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-list>
+            </ion-item>
+
+            <ion-item  *ngIf="atiendeAlertaBool" >
+              <ion-list>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="12" class="imagenes"  *ngFor="let item of imagenesCargadas;let i = index" >
+                      <ion-img class="imagencargadaunica" [src]="item.urlimagen" ></ion-img>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-list>
+            </ion-item>
+
+            <ion-item  *ngIf="atiendeAlertaBool" >
+              <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >Descripción de la atención</ion-label>
+              <ion-textarea *ngIf="isPolicia" formControlName="descripcionAtencion"    placeholder="Escribe tu mensaje aquí" rows="4" ></ion-textarea>
+            </ion-item>
+
+            <ion-item  *ngIf="!atiendeAlertaBool" >
+              <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >Descripción de la atención</ion-label> <br>
+              <ion-text style="white-space: normal;" >
+                <ion-icon  color="secondary" name="document-text-outline"></ion-icon> {{ objetoRecibido.descripcionAtencion}}
+              </ion-text>
+
+            </ion-item>
+
+            <ion-button *ngIf="isPolicia && atiendeAlertaBool" (click)="atiendeAlerta()"  expand="block" shape="round" color="success">Atender</ion-button>
+            <ion-button   (click)="redireccionarpruebda()"  expand="block" shape="round" color="success">ir </ion-button>
+
+          </ion-list>
+        </form>
+
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+
+    <ion-content>
+      <ion-button color="tertiary"  fill="outline"  style="color:white;width: 100%;" >Atencion</ion-button>
+    </ion-content>
+  </ion-toolbar>
+</ion-footer>

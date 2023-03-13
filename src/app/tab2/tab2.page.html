@@ -13,13 +13,52 @@
 
 <ion-content>
 
+ 
+  <ion-accordion-group  *ngIf="isPolicia" [value]="['first']" >
+    <ion-accordion value="first">
+      <ion-item slot="header" color="light">
+        <ion-label>Mis Alertas</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <ion-progress-bar *ngIf="!cargandoListaMisAlertas" color="tertiary"   type="indeterminate"></ion-progress-bar>
 
- <ion-list>
-  <ion-item *ngFor="let item of listaAlertas"  detail >
-    <ion-label >{{item.subCategoria}} <ion-badge color="{{item.idEstadoAlerta == 3 ? 'success' : 'danger'}}">{{item.idEstadoAlerta == 3 ? 'atendido' : 'en proceso'}}</ion-badge><br>
-    <ion-text color="dark"><sub>{{item.horaminutosPasados}}</sub></ion-text> <br>
-    <ion-text color="success" style="font-weight: bold;" (click)="enviarMensajeWpp(item.celular)" ><sub><ion-icon  name="logo-whatsapp"></ion-icon> {{item.celular}}</sub></ion-text></ion-label>
-    
-  </ion-item>
-</ion-list>
+        <ion-list>
+            <ion-item *ngFor="let item of listaAlertas" (click)="mostrarDetalle(item)"  detail >
+            <ion-label > <span style="text-decoration: underline; margin-right: 21px;">{{item.subCategoria}}</span>  <ion-badge color="{{item.idEstadoAlerta == 3 ? 'success' : 'danger'}}">{{item.idEstadoAlerta == 3 ? 'atendido' : 'en proceso'}}</ion-badge><br>
+            <ion-text color="dark"><sub>{{item.horaminutosPasados}}</sub></ion-text> <br>
+            <ion-text color="success" style="font-weight: bold;" (click)="enviarMensajeWpp(item.celular)" ><sub><ion-icon  name="logo-whatsapp"></ion-icon> {{item.celular}}</sub></ion-text></ion-label>
+          </ion-item>
+        </ion-list>
+
+      </div>
+    </ion-accordion>
+    <ion-accordion value="second">
+      <ion-item slot="header" color="light">
+        <ion-label>Mis Asignaciones</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        Second Content
+      </div>
+    </ion-accordion>
+    <ion-accordion value="third">
+      <ion-item slot="header" color="light">
+        <ion-label>Atendidos</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        Third Content
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+
+  <ion-list *ngIf="!isPolicia" >
+    <ion-progress-bar *ngIf="!cargandoListaMisAlertas && !isPolicia" color="tertiary"   type="indeterminate"></ion-progress-bar>
+    <ion-item *ngFor="let item of listaAlertas" (click)="mostrarDetalle(item)"  detail >
+      <ion-label > <span style="text-decoration: underline; margin-right: 21px;">{{item.subCategoria}}</span>  <ion-badge color="{{item.idEstadoAlerta == 3 ? 'success' : 'danger'}}">{{item.idEstadoAlerta == 3 ? 'atendido' : 'en proceso'}}</ion-badge><br>
+      <ion-text color="dark"><sub>{{item.horaminutosPasados}}</sub></ion-text> <br>
+      <ion-text *ngIf="!item.esAnonimo" color="success" style="font-weight: bold;" (click)="enviarMensajeWpp(item.celular)" ><sub><ion-icon  name="logo-whatsapp"></ion-icon> {{ item.celular}}</sub></ion-text></ion-label>
+      
+      <ion-text *ngIf="item.esAnonimo" color="danger" style="font-weight: bold;"   ><sub>( Anónimo )</sub></ion-text>
+
+    </ion-item>
+  </ion-list>
 </ion-content>

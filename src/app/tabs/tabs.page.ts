@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import  {  UsuarioService} from './../services/usuario.service';
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
@@ -7,6 +7,20 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  public datausuario : any;
+  constructor(
+    private usuarioService: UsuarioService
+    ) {
+
+      this.datausuario = usuarioService.getDatosSesionUsuario();
+      // console.log("en TABS-",dataUsuario);
+
+    }
+
+
+  // ionViewWillEnter(){
+  //   this.datausuario = this.usuarioService.getDatosSesionUsuario();
+
+  // }
 
 }

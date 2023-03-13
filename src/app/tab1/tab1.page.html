@@ -19,44 +19,42 @@
       <ion-col style="text-align: center;">
         <p style="margin-bottom: 0;" >
           <img style="width: 30%;" (click)="seleccionVecinoVigilante('1')" src="/assets/imagenes/vecinos vigilantes.png" alt="">
-
         </p>
-        
         <ion-text color="dark">
           <h4 style="margin-top: 0;" >Vecinos vigilantes</h4>
         </ion-text>
-
-
       </ion-col>
-
-    
     </ion-row>
 
     <ion-row>
-
-      <ion-col style="text-align: center;"  >
+      <ion-col style="text-align: center;"  hidden >
         <p style="margin-bottom: 0;" >
           <img style="width: 30%;"   src="/assets/imagenes/alerta.png" alt="">
         </p>
         <ion-text color="dark">
           <h4 style="margin-top: 0;">Reporta alerta</h4>
         </ion-text>
-    </ion-col>
-
-
-
+      </ion-col>
     </ion-row>
-      <ion-col style="text-align: center;"  >
-        <p style="margin-bottom: 0;" >
-          <img style="width: 30%;"   src="/assets/imagenes/servicios_.png" alt="">
-        </p>
-        <ion-text color="dark">
-          <h4 style="margin-top: 0;">Servicios</h4>
-        </ion-text>
-    </ion-col>
+
+
     <ion-row>
-
+      <ion-col style="text-align: center;" hidden >
+          <p style="margin-bottom: 0;" >
+            <img style="width: 30%;"   src="/assets/imagenes/servicios_.png" alt="">
+          </p>
+          <ion-text color="dark">
+            <h4 style="margin-top: 0;">Servicios</h4>
+          </ion-text>
+      </ion-col>
     </ion-row>
+
+    <ion-row *ngIf="datausuario.codUsuarioPerfil == 4 ? true : false" tab="tab3" >
+      <ion-col style="text-align: center;" >
+        <ion-button fill="outline" (click)="regresar()" color="tertiary">Salir</ion-button>
+      </ion-col>
+    </ion-row>
+
   </ion-grid>
 
 </ion-content>

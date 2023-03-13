@@ -44,8 +44,8 @@ export class RegistroDireccionComponent implements OnInit {
   lastEmittedValue: RangeValue;
   mapLoaded = false;
   imagenesCargadas : any = [];
-  // @ViewChild('contenidomapa', { static: false }) mapElement: ElementRef;
   @ViewChild('contenidomapa', {static: false}) mapElement: ElementRef;
+  isChecked: boolean = false;
 
 
 
@@ -56,7 +56,8 @@ export class RegistroDireccionComponent implements OnInit {
   });
 
   step2Form = new FormGroup({
-    observacionalerta: new FormControl('', Validators.required)
+    observacionalerta: new FormControl('', Validators.required),
+    esanonimo : new FormControl()
   });
 
   categoriaSeleccionada : string;
@@ -95,7 +96,8 @@ export class RegistroDireccionComponent implements OnInit {
     });
 
     this.step2Form = new FormGroup({
-      observacionalerta: new FormControl('', Validators.required)
+      observacionalerta: new FormControl('', Validators.required),
+      esanonimo : new FormControl()
     });
 
 
@@ -225,10 +227,7 @@ export class RegistroDireccionComponent implements OnInit {
       this.map.panTo(position);
 
     });
-
   }
-
-
 
   regresar(){
     this.router.navigateByUrl('seleccionarcatvecinovig/' +this.idcategoriaSeleccionada , { replaceUrl: true });
@@ -236,7 +235,7 @@ export class RegistroDireccionComponent implements OnInit {
   }
 
   cancelar(){
-    this.router.navigateByUrl('preregistro', { replaceUrl: true });
+    this.router.navigateByUrl('seleccionarcatvecinovig/' +this.idcategoriaSeleccionada , { replaceUrl: true });
   }
   
   formularioUnoEsValido(){
@@ -284,7 +283,7 @@ export class RegistroDireccionComponent implements OnInit {
     const formValues = Object.assign({}, this.step1Form.value, this.step2Form.value);
 
     //verifica si hay latitud y longitud
-    
+ 
     if(this.currpositionmarker){
         var position = this.currpositionmarker.getPosition();
         var latitud = position.lat();
@@ -321,6 +320,7 @@ export class RegistroDireccionComponent implements OnInit {
             "contentType": contentType,
             "extensionimg": extensionimg,
             "base64Data": base64Data,
+            "esAnonimo" : (this.isChecked ? 1 : 0)
           };
     
           this.loading = true;
@@ -366,6 +366,10 @@ export class RegistroDireccionComponent implements OnInit {
     }
 
 
+
+  }
+
+  onCheckboxChange(){
 
   }
 

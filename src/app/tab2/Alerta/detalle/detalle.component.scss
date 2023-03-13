@@ -1,0 +1,18 @@
+ion-header {
+    background-color: #007aff; /* Fondo azul */
+    color: #ffffff; /* Letras blancas */
+  }
+
+  ion-toolbar {
+    --background: #007bff; /* Fondo azul */
+    color: #ffffff !important; /* Letras blancas */
+  }
+
+
+  .input-redondeado{
+    width: 100%; 
+    // background-color: #8080805e; 
+    border: 1px solid #005cc3;
+    border-radius: 25px;
+     text-align: center;
+}

@@ -13,6 +13,8 @@ import { UsuarioService } from '../services/usuario.service';
 })
 export class Tab1Page {
 
+  public datausuario : any;
+
   constructor( 
     private router: Router,
     public modalController: ModalController,
@@ -20,13 +22,13 @@ export class Tab1Page {
     private usuarioService : UsuarioService
 
     ) {
+      this.datausuario = usuarioService.getDatosSesionUsuario();
 
     }
 
     regresar(){
       this.usuarioService.clearDatosSesionUsuario();
       this.router.navigateByUrl('login', { replaceUrl: true });
-
     }
     seleccionVecinoVigilante(idCategoriaAlerta : string){
       this.router.navigateByUrl('seleccionarcatvecinovig/' + idCategoriaAlerta, { replaceUrl: true });

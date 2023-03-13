@@ -34,8 +34,6 @@
             <ion-input formControlName="referenciadireccion" class="input-redondeado" ></ion-input>
           </ion-item> 
     
-
-       
           <ion-item>
             <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >Seleccionar punto en el mapa de la ocupación irregular</ion-label>
             
@@ -44,14 +42,8 @@
     
               </div>
             <!-- </div> -->
-          
           </ion-item> 
     
-
-
-
-
-
 
     </ion-list>
   </form>
@@ -64,22 +56,22 @@
           <h5 style="margin-top: 4px;font-weight: bold;">Fotografía y/o audio</h5>
         </ion-text>    
       </ion-item>
-
-
-      <!-- <ion-item>
+      <!-- 
+      <ion-item>
         <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >Foto real</ion-label>
         <ion-button color="secondary" style="width: 100%;" shape="round"><ion-icon name="camera-outline"></ion-icon> Agregar fotografía</ion-button>
-      </ion-item> -->
-
-      <ion-item   >
-        
+      </ion-item> 
+      -->
+      <ion-item>
         <ion-chip outline class="sectionfoto ion-color" style="width: 100%;" (click)="selectImageSource()" >
+          
           <input
           type="file"
           hidden="true" 
           #fileInput
           accept="image/*"
           />
+
           <ion-label id="lblestadosubida" style="width: 90%;"   >Agregar fotografía&nbsp;&nbsp;</ion-label>
           <ion-icon name="camera-outline"  ></ion-icon>
           <ion-icon id="iconcheck"  name="checkmark-outline" style="display:none;" ></ion-icon>
@@ -91,7 +83,7 @@
       </ion-item>
 
       <!-- *ngif="imagenesCargadas.length > 0" -->
-      <ion-item  >
+      <ion-item>
         <ion-list>
           <ion-grid>
             <ion-row>
@@ -104,11 +96,13 @@
       </ion-item>
 
       <ion-item>
-        <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >Observaciones</ion-label>
+        <ion-label color="dark" position="stacked" style="margin-bottom: 10px;"  >Descripción</ion-label>
         <ion-textarea formControlName="observacionalerta" placeholder="Escribe tu mensaje aquí" rows="4" ></ion-textarea>
       </ion-item>
 
-      <!-- <ion-item>
+
+      <!-- 
+      <ion-item>
         <ion-text color="tertiary" style="text-align: center; color: #3f49ab; font-weight: bold;">
           <h5 style="margin-top: 4px;font-weight: bold;margin-bottom: 0px;">Si desea envie una grabación de audio:</h5>
           <small color="danger" style="color:red;">(Máximo 30 segundos )</small>
@@ -116,14 +110,17 @@
       </ion-item>
 
       <ion-item>
-        
         <ion-button fill="outline"><ion-icon name="mic-outline" ></ion-icon></ion-button>
         <ion-range (ionChange)="onIonChange($event)"></ion-range>
         <ion-button fill="outline"><ion-icon name="stop-outline"></ion-icon></ion-button>
-
       </ion-item> -->
     </ion-list>
   </form>
+  <br>
+  <ion-item *ngIf="datosUsuario.codUsuarioPerfil == 4 ? false : true" >
+    <ion-checkbox  [(ngModel)]="isChecked" color="tertiary" slot="start"></ion-checkbox>
+    <ion-label color="danger" style="white-space: normal;" >Deseo que este reporte sea enviado como anonimo</ion-label>
+  </ion-item>
 
   <ion-button (click)="submit()" *ngIf="currentStep === 1" disabled="{{loading}}"  expand="block" shape="round" color="success">Enviar</ion-button>
   <ion-button (click)="nextStep()" *ngIf="currentStep < 1" expand="block" shape="round" color="success">Continuar</ion-button>

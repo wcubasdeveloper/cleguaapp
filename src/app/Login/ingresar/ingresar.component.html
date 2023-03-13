@@ -20,7 +20,7 @@
       <p class="forget-text"><a >olvidaste tu clave ?</a></p>
       <ion-button class="login-button" disabled="{{loading}}" (click)="iniciaSesion()" color="success" expand="block">Inicia sesion</ion-button>
       <ion-button class="login-button" (click)="registrarUsuario()" color="tertiary"  expand="block">Crea tu cuenta</ion-button>
-      <ion-button class="login-button" color="light"  expand="block">Soy visitante</ion-button>
+      <ion-button class="login-button" disabled="{{loading}}"  (click)="ingresarComoVisitante()" color="light"  expand="block">Soy visitante</ion-button>
     </form>
   </div>
 
